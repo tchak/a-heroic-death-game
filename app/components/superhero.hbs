@@ -1,0 +1,33 @@
+<div class="relative overflow-hidden">
+  <div
+    class="mt-10 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 xl:mt-28"
+  >
+    <div class="text-center">
+      <h2
+        class="text-4xl tracking-tight leading-10 font-extrabold text-gray-900 sm:text-5xl sm:leading-none md:text-6xl"
+      >
+        {{@hero.name}}
+      </h2>
+      <div class="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
+        <div class="rounded-md shadow">
+          <a
+            href={{@hero.file_url}}
+            rel="noopener noreferrer"
+            target="_blank"
+            class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-red-600 hover:bg-red-500 focus:outline-none focus:shadow-outline-red transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10"
+          >
+            {{t "Get Character Sheet"}}
+          </a>
+        </div>
+      </div>
+
+      <ul class="flex flex-col items-center mt-4">
+        {{#each @hero.items as |item|}}
+          <li class="py-5">
+            <img alt={{item.name}} src={{item.file_url}} />
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>

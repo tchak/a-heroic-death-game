@@ -1,0 +1,59 @@
+<div class="relative overflow-hidden">
+  <div
+    class="mt-10 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 xl:mt-28"
+  >
+    <div class="text-center">
+      <h2
+        class="text-4xl tracking-tight leading-10 font-extrabold text-gray-900 sm:text-5xl sm:leading-none md:text-6xl"
+      >
+        {{t "Title"}}
+      </h2>
+
+      <span class="relative z-0 inline-flex shadow-sm">
+        {{#if @game.started_at}}
+          <button
+            type="button"
+            class="relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150"
+            {{on "click" this.stop}}
+          >
+            {{t "Stop"}}
+          </button>
+        {{else}}
+          <button
+            type="button"
+            class="relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150"
+            {{on "click" this.start}}
+          >
+            {{t "Start"}}
+          </button>
+        {{/if}}
+        <button
+          type="button"
+          class="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150"
+          {{on "click" this.refresh}}
+        >
+          {{t "Refresh"}}
+        </button>
+        <button
+          type="button"
+          class="-ml-px relative inline-flex items-center px-4 py-2 rounded-r-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150"
+          {{on "click" this.reset}}
+        >
+          {{t "Reset"}}
+        </button>
+      </span>
+
+      <ul class="flex flex-col items-center mt-4">
+        {{#each @game.characters as |character|}}
+          <li class="py-5">
+            <Link @route="superhero" @model={{character.key}} as |l|>
+              <a href={{l.url}} {{on "click" l.transitionTo}}>
+                {{character.name}}
+              </a>
+            </Link>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>

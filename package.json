@@ -26,6 +26,7 @@
     "@ember/render-modifiers": "^1.0.2",
     "@fullhuman/postcss-purgecss": "^2.1.2",
     "@glimmer/component": "^1.0.0",
+    "@tailwindcss/ui": "^0.2.2",
     "@types/ember": "^3.1.2",
     "@types/ember-resolver": "^5.0.8",
     "babel-eslint": "^10.1.0",
