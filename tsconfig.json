@@ -24,10 +24,10 @@
       "fetch": [
         "node_modules/ember-fetch"
       ],
-      "ember-octane-template/tests/*": [
+      "a-heroic-death-game/tests/*": [
         "tests/*"
       ],
-      "ember-octane-template/*": [
+      "a-heroic-death-game/*": [
         "app/*"
       ],
       "*": [

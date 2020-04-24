@@ -2,7 +2,7 @@
 
 module.exports = function (environment) {
   const ENV = {
-    modulePrefix: 'ember-octane-template',
+    modulePrefix: 'a-heroic-death-game',
     environment,
     rootURL: '/',
     locationType: 'auto',
