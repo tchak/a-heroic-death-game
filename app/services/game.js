@@ -129,4 +129,84 @@ export default class extends Service {
       this.fetchGame();
     }
   }
+
+  async knockoutHero(id) {
+    const response = await fetch(
+      `${ENV.API_HOST}/games/${this.hostKey}/characters/${id}`,
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          action: 'knockout',
+        }),
+      }
+    );
+
+    if (response.ok) {
+      this.fetchGame();
+    }
+  }
+
+  async killHero(id) {
+    const response = await fetch(
+      `${ENV.API_HOST}/games/${this.hostKey}/characters/${id}`,
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          action: 'kill',
+        }),
+      }
+    );
+
+    if (response.ok) {
+      this.fetchGame();
+    }
+  }
+
+  async bringbackHero(id) {
+    const response = await fetch(
+      `${ENV.API_HOST}/games/${this.hostKey}/characters/${id}`,
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          action: 'bringback',
+        }),
+      }
+    );
+
+    if (response.ok) {
+      this.fetchGame();
+    }
+  }
+
+  async moveItem(id, from, to) {
+    const response = await fetch(
+      `${ENV.API_HOST}/games/${this.hostKey}/items/${id}`,
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          action: 'move',
+          from,
+          to,
+        }),
+      }
+    );
+
+    if (response.ok) {
+      this.fetchGame();
+    }
+  }
+
+  async useItem(id) {
+    const response = await fetch(
+      `${ENV.API_HOST}/games/${this.hostKey}/items/${id}`,
+      {
+        method: 'POST',
+        action: 'use',
+      }
+    );
+
+    if (response.ok) {
+      this.fetchGame();
+    }
+  }
 }
