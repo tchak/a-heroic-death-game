@@ -6,35 +6,24 @@
       <h2
         class="text-4xl tracking-tight leading-10 font-extrabold text-gray-900 sm:text-5xl sm:leading-none md:text-6xl mb-4"
       >
-        {{@hero.name}}
+        {{this.name}}
       </h2>
 
       <Tabs @options={{this.tabs}} @onChange={{this.selectTab}} />
 
       {{#if (eq this.tab "Items")}}
-        <Superhero::Items @items={{@hero.items}} />
+        <Player::Items @items={{this.items}} />
       {{else if (eq this.tab "Room")}}
-        <Superhero::Items @items={{@hero.room}} />
+        <Player::Items @items={{this.room}} />
       {{else if (eq this.tab "Abilities")}}
-        <Superhero::Items @items={{@hero.abilities}} />
+        <Player::Items @items={{this.abilities}} />
       {{else if (eq this.tab "Information")}}
-        <Superhero::Text @text={{@hero.information}} />
+        <Player::Text @text={{this.information}} />
       {{else if (eq this.tab "Secret")}}
-        <Superhero::Text @text={{@hero.secret}} />
+        <Player::Text @text={{this.secret}} />
       {{/if}}
 
-      <div class="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8 mb-4">
-        <div class="rounded-md shadow">
-          <a
-            href={{@hero.profile}}
-            rel="noopener noreferrer"
-            target="_blank"
-            class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-red-600 hover:bg-red-500 focus:outline-none focus:shadow-outline-red transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10"
-          >
-            {{t "Get Character Sheet"}}
-          </a>
-        </div>
-      </div>
+      <Player::Sheet @url={{this.profile}} />
     </div>
   </div>
 </div>

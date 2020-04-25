@@ -1,11 +1,13 @@
 import Route from '@ember/routing/route';
-import fetch from 'fetch';
-import ENV from 'a-heroic-death-game/config/environment';
+import { inject as service } from '@ember/service';
 
 export default class extends Route {
-  async model({ id }) {
-    return fetch(`${ENV.API_HOST}/characters/${id}`).then((response) =>
-      response.json()
-    );
+  @service game;
+
+  model({ key }) {
+    localStorage.setItem('PLAYER_KEY', key);
+    localStorage.removeItem('HOST_KEY');
+
+    return this.game.fetchHero();
   }
 }

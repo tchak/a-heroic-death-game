@@ -1,39 +1,23 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
-import fetch from 'fetch';
-import ENV from 'a-heroic-death-game/config/environment';
 import { tracked } from '@glimmer/tracking';
+import { inject as service } from '@ember/service';
 
 const TABS = ['Characters', 'Items'];
 
 export default class extends Component {
-  get key() {
-    return localStorage.HOST_KEY;
+  @service game;
+
+  get characters() {
+    return this.game.characters;
   }
 
-  @action async start() {
-    await fetch(`${ENV.API_HOST}/games/${this.key}/start`, {
-      method: 'POST',
-    });
-    location.reload();
+  get items() {
+    return this.game.items;
   }
 
-  @action async stop() {
-    await fetch(`${ENV.API_HOST}/games/${this.key}/stop`, {
-      method: 'POST',
-    });
-    location.reload();
-  }
-
-  @action refresh() {
-    location.reload();
-  }
-
-  @action async reset() {
-    await fetch(`${ENV.API_HOST}/games/${this.key}/reset`, {
-      method: 'POST',
-    });
-    location.reload();
+  get isStarted() {
+    return this.game.started;
   }
 
   @tracked tab = 'Characters';

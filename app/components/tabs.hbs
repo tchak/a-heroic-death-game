@@ -3,10 +3,10 @@
     <select
       aria-label={{t "Selected tab"}}
       class="form-select block w-full"
-      {{on "change" @onChange}}
+      {{on "change" (fn this.selectOption @onChange)}}
     >
       {{#each @options as |opt|}}
-        <option selected={{opt.selected}}>
+        <option value={{opt.name}} selected={{opt.selected}}>
           {{opt.name}}
         </option>
       {{/each}}
