@@ -1,0 +1,40 @@
+<div>
+  <div class="sm:hidden">
+    <select
+      aria-label={{t "Selected tab"}}
+      class="form-select block w-full"
+      {{on "change" @onChange}}
+    >
+      {{#each @options as |opt|}}
+        <option selected={{opt.selected}}>
+          {{opt.name}}
+        </option>
+      {{/each}}
+    </select>
+  </div>
+  <div class="hidden sm:block">
+    <div class="border-b border-gray-200">
+      <nav class="-mb-px flex">
+        {{#each @options as |opt|}}
+          {{#if opt.selected}}
+            <a
+              href="#"
+              class="w-1/4 py-4 px-1 text-center border-b-2 border-red-500 font-medium text-sm leading-5 text-red-600 focus:outline-none focus:text-red-800 focus:border-red-700"
+              aria-current="page"
+            >
+              {{opt.name}}
+            </a>
+          {{else}}
+            <a
+              href="#"
+              class="w-1/4 py-4 px-1 text-center border-b-2 border-transparent font-medium text-sm leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300"
+              {{on "click" (fn @onChange opt.name)}}
+            >
+              {{opt.name}}
+            </a>
+          {{/if}}
+        {{/each}}
+      </nav>
+    </div>
+  </div>
+</div>

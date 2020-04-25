@@ -4,12 +4,12 @@
   >
     <div class="text-center">
       <h2
-        class="text-4xl tracking-tight leading-10 font-extrabold text-gray-900 sm:text-5xl sm:leading-none md:text-6xl"
+        class="text-4xl tracking-tight leading-10 font-extrabold text-gray-900 sm:text-5xl sm:leading-none md:text-6xl mb-6"
       >
         {{t "Title"}}
       </h2>
 
-      <span class="relative z-0 inline-flex shadow-sm">
+      <span class="relative z-0 inline-flex shadow-sm mb-6">
         {{#if @game.started_at}}
           <button
             type="button"
@@ -43,17 +43,13 @@
         </button>
       </span>
 
-      <ul class="flex flex-col items-center mt-4">
-        {{#each @game.characters as |character|}}
-          <li class="py-5">
-            <Link @route="superhero" @model={{character.key}} as |l|>
-              <a href={{l.url}} {{on "click" l.transitionTo}}>
-                {{character.name}}
-              </a>
-            </Link>
-          </li>
-        {{/each}}
-      </ul>
+      <Tabs @options={{this.tabs}} @onChange={{this.selectTab}} />
+
+      {{#if (eq this.tab "Characters")}}
+        <Game::Characters @characters={{@game.characters}} />
+      {{else if (eq this.tab "Items")}}
+        <Superhero::Items @items={{@game.items}} />
+      {{/if}}
     </div>
   </div>
 </div>

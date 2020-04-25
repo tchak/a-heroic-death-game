@@ -5,3 +5,9 @@ Start: Start
 Stop: Stop
 Refresh: Refresh
 Reset: Reset
+Items: Items
+Room: Room
+Abilities: Abilities
+Selected tab: Selected tab
+Uses: "{ uses, plural, =0 {can not be used anymore} one {1 use left} other {{uses} uses left}}"
+Dead: Dead
