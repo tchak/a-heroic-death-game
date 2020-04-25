@@ -11,7 +11,6 @@
     "test": "tests"
   },
   "scripts": {
-    "build": "ember build",
     "lint:hbs": "ember-template-lint .",
     "lint:js": "eslint .",
     "format:hbs": "prettier --write **/*.hbs",
@@ -19,7 +18,8 @@
     "start:sw": "ember serve",
     "test": "SW_DISABLED=true ember test",
     "bundlesize": "ember bundlesize:test",
-    "ci:build": "yarn lint:hbs && yarn lint:js && ember build --prod && ember bundlesize:test --build-app=false"
+    "build": "ember build",
+    "build:prod": "yarn lint:hbs && yarn lint:js && ember build --prod && ember bundlesize:test --build-app=false"
   },
   "devDependencies": {
     "@ember/optional-features": "^1.1.0",
