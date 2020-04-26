@@ -9,7 +9,7 @@ module.exports = {
     },
     'javascript [brotli]': {
       pattern: ['assets/vendor-*.js', 'assets/a-heroic-death-game-*.js'],
-      limit: '150KB',
+      limit: '180KB',
       compression: 'brotli',
     },
     css: {
