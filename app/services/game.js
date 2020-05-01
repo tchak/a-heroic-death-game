@@ -7,6 +7,7 @@ import interval from 'human-interval';
 
 export default class extends Service {
   @tracked _api;
+  @tracked heroKey;
 
   get api() {
     if (!this._api) {
@@ -29,6 +30,11 @@ export default class extends Service {
   }
 
   get hero() {
+    if (this.isHost) {
+      return this.characters.find(
+        (character) => character.key === this.heroKey
+      );
+    }
     return this._api.data;
   }
 
@@ -220,7 +226,25 @@ export default class extends Service {
       `${ENV.API_HOST}/games/${this.hostKey}/items/${id}`,
       {
         method: 'POST',
-        action: 'use',
+        body: JSON.stringify({
+          action: 'use',
+        }),
+      }
+    );
+
+    if (response.ok) {
+      this.fetchGame();
+    }
+  }
+
+  async useAbility(id) {
+    const response = await fetch(
+      `${ENV.API_HOST}/games/${this.hostKey}/abilities/${id}`,
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          action: 'use',
+        }),
       }
     );
 

@@ -65,7 +65,7 @@
 
   {{#if (and this.what this.where this.whom)}}
     <div class="mt-1 sm:mt-0 pt-3">
-      <Button @title={{t "OK"}} @onClick={{this.giveItem}} />
+      <Button @title={{t "OK"}} @color="red" {{on "click" this.giveItem}} />
     </div>
   {{/if}}
 </div>

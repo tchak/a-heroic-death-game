@@ -1,0 +1,33 @@
+<div class="relative overflow-hidden">
+  <div
+    class="mt-10 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 xl:mt-28"
+  >
+    <div>
+      <h2
+        class="text-center text-4xl tracking-tight leading-10 font-extrabold text-gray-900 sm:text-5xl sm:leading-none md:text-6xl mb-4"
+      >
+        {{this.name}}
+      </h2>
+
+      {{#let (link "host" this.game.hostKey) as |l|}}
+        <a href={{l.url}} {{on "click" l.transitionTo}}>
+          {{t "Back"}}
+        </a>
+      {{/let}}
+
+      <Tabs @options={{this.tabs}} @onChange={{this.selectTab}} />
+
+      {{#if (eq this.tab "Items")}}
+        <Host::Items @items={{this.items}} @useItem={{this.useItem}} />
+      {{else if (eq this.tab "Room")}}
+        <Host::Items @items={{this.room}} />
+      {{else if (eq this.tab "Abilities")}}
+        <Host::Items @items={{this.abilities}} @useItem={{this.useAbility}} />
+      {{else if (eq this.tab "Information")}}
+        <Player::Text @text={{this.information}} />
+      {{else if (eq this.tab "Secret")}}
+        <Player::Text @text={{this.secret}} />
+      {{/if}}
+    </div>
+  </div>
+</div>
