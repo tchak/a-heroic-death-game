@@ -33,6 +33,7 @@ module.exports = function (defaults) {
             },
           },
           require('tailwindcss')('./config/tailwind.config.js'),
+          require('autoprefixer'),
           ...(isProduction ? [purgeCSS] : []),
         ],
       },

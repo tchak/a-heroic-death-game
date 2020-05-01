@@ -1,0 +1,71 @@
+<div class="mt-6 sm:mt-5 flex flex-col sm:border-t sm:border-gray-200 sm:pt-5">
+  <div class="mt-1 sm:mt-0">
+    <div class="rounded-md shadow-sm">
+      {{t "Take"}}
+      <select
+        class="block form-select w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+        {{on "change" this.selectWhat}}
+      >
+        <option></option>
+        {{#each this.items as |item|}}
+          <option selected={{eq item.key this.what}} value={{item.key}}>
+            {{item.name}}
+            {{#if item.inRoom}}
+              {{t "(in the room)"}}
+            {{/if}}
+          </option>
+        {{/each}}
+      </select>
+    </div>
+  </div>
+
+  {{#if this.what}}
+    <div class="mt-1 sm:mt-0">
+      <div class="rounded-md shadow-sm">
+        {{t "and"}}
+        <select
+          class="block form-select w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+          {{on "change" this.selectWhere}}
+        >
+          {{#each this.places as |place|}}
+            <option selected={{eq place.key this.where}} value={{place.key}}>
+              {{place.name}}
+            </option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+  {{/if}}
+
+  {{#if (and this.what this.where)}}
+    <div class="mt-1 sm:mt-0">
+      <div class="rounded-md shadow-sm">
+        {{#if (eq this.where "items")}}
+          {{t "to"}}
+        {{else}}
+          {{t "of"}}
+        {{/if}}
+        <select
+          class="block form-select w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+          {{on "change" this.selectWhom}}
+        >
+          <option></option>
+          {{#each this.characters as |character|}}
+            <option
+              selected={{eq character.key this.whom}}
+              value={{character.key}}
+            >
+              {{character.name}}
+            </option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+  {{/if}}
+
+  {{#if (and this.what this.where this.whom)}}
+    <div class="mt-1 sm:mt-0 pt-3">
+      <Button @title={{t "OK"}} @onClick={{this.giveItem}} />
+    </div>
+  {{/if}}
+</div>

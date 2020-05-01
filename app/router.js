@@ -7,6 +7,7 @@ export default class Router extends EmberRouter {
 }
 
 Router.map(function () {
+  this.route('test');
   this.route('host', { path: '/host/:key' });
   this.route('superhero', { path: '/superhero/:key' });
   this.route('404', { path: '/*path' });

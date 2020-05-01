@@ -1,11 +1,36 @@
 import Service from '@ember/service';
 import fetch from 'fetch';
 import ENV from 'a-heroic-death-game/config/environment';
+import swr from 'ember-swr';
 import { tracked } from '@glimmer/tracking';
+import interval from 'human-interval';
 
 export default class extends Service {
-  @tracked game;
-  @tracked hero;
+  @tracked _api;
+
+  get api() {
+    if (!this._api) {
+      if (this.isPlayer) {
+        this._api = swr(`${ENV.API_HOST}/characters/${this.playerKey}`, {
+          refreshInterval: interval('10 minutes'),
+        });
+      } else {
+        this._api = swr(`${ENV.API_HOST}/games/${this.hostKey}`, {
+          revalidateOnFocus: false,
+          revalidateOnReconnect: false,
+        });
+      }
+    }
+    return this._api;
+  }
+
+  get game() {
+    return this._api.data;
+  }
+
+  get hero() {
+    return this._api.data;
+  }
 
   get hostKey() {
     return localStorage.getItem('HOST_KEY');
@@ -24,12 +49,7 @@ export default class extends Service {
   }
 
   get isLoaded() {
-    if (this.isPlayer) {
-      return !!this.hero;
-    } else if (this.isHost) {
-      return !!this.game;
-    }
-    return false;
+    return !this.api.isLoading;
   }
 
   get isStarted() {
@@ -70,13 +90,10 @@ export default class extends Service {
     if (!this.isPlayer) {
       return false;
     }
-    const response = await fetch(
-      `${ENV.API_HOST}/characters/${this.playerKey}`
-    );
 
-    if (response.ok) {
-      this.hero = await response.json();
-    } else {
+    const ok = await this.api.revalidate();
+
+    if (!ok) {
       localStorage.removeItem('PLAYER_KEY');
     }
   }
@@ -85,11 +102,10 @@ export default class extends Service {
     if (!this.isHost) {
       return false;
     }
-    const response = await fetch(`${ENV.API_HOST}/games/${this.hostKey}`);
 
-    if (response.ok) {
-      this.game = await response.json();
-    } else {
+    const ok = await this.api.revalidate();
+
+    if (!ok) {
       localStorage.removeItem('HOST_KEY');
     }
   }
