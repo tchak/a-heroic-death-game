@@ -52,9 +52,12 @@ export default class extends Service {
     return !this.api.isLoading;
   }
 
+  get isUnlocked() {
+    return localStorage.getItem('UNLOCKED');
+  }
   get isStarted() {
     if (this.isPlayer) {
-      return !!this.hero.game.started_at;
+      return !!this.hero.game.started || this.isUnlocked;
     }
     return !!this.game.started_at;
   }

@@ -16,10 +16,6 @@ export default class extends Component {
     return this.game.items;
   }
 
-  get isStarted() {
-    return this.game.started;
-  }
-
   @tracked tab = 'Characters';
 
   get tabs() {

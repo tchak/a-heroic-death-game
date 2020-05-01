@@ -20,6 +20,10 @@ export default class extends Component {
     this.tab = name;
   }
 
+  get isStarted() {
+    return this.game.isStarted;
+  }
+
   get isDead() {
     return this.game.isDead;
   }
