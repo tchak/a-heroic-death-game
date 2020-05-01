@@ -6954,10 +6954,10 @@ ember-source@~3.18.0:
     semver "^6.1.1"
     silent-error "^1.1.1"
 
-ember-swr@^0.0.7:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/ember-swr/-/ember-swr-0.0.7.tgz#26afacdc7ce36be5720b0eb6d9cbb24d14f13ca7"
-  integrity sha512-9TM/dSstKdZgGXli5fC7v1N8tGxyB+dyRi8K/Wie/grdaMsJE1CAFsWtUrTJgul2VFB8CrABOH1m09Pz61UMeg==
+ember-swr@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/ember-swr/-/ember-swr-0.0.8.tgz#a87e1d95b624ad5bdede670c7c0cbac137eafef9"
+  integrity sha512-XmzCJGESMQXLPie77z3hmAbzy/kleyRzJTUr8r8dtuGGSuKbGXOZ2RlcUGPVDoVVNclIjQ9U2HVH0O6Kgl7lcw==
   dependencies:
     "@glimmer/tracking" "^1.0.0"
     ember-auto-import "^1.5.3"
@@ -6965,6 +6965,7 @@ ember-swr@^0.0.7:
     ember-cli-htmlbars "^4.2.2"
     ember-cli-typescript "^3.1.3"
     ember-destroyable-polyfill "^0.4.0"
+    fast-deep-equal "^3.1.1"
     zen-observable-ts "^0.8.21"
 
 ember-template-lint-plugin-prettier@^1.1.0:
@@ -7577,6 +7578,11 @@ fast-deep-equal@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-2.0.1.tgz#7b05218ddf9667bf7f370bf7fdb2cb15fdd0aa49"
   integrity sha1-ewUhjd+WZ79/Nwv3/bLLFf3Qqkk=
+
+fast-deep-equal@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-3.1.1.tgz#545145077c501491e33b15ec408c294376e94ae4"
+  integrity sha512-8UEa58QDLauDNfpbrX55Q9jrGHThw2ZMdOky5Gl1CDtVeJDPVrG4Jxx1N8jw2gkWaff5UUuX1KJd+9zGe2B+ZA==
 
 fast-diff@^1.1.2:
   version "1.2.0"
@@ -12600,10 +12606,10 @@ table@^5.2.3:
     slice-ansi "^2.1.0"
     string-width "^3.0.0"
 
-tailwindcss@^1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-1.4.1.tgz#e9f3695c246823b881cd0aa9eabaf8a844dec2ec"
-  integrity sha512-SbNG8Ca0o3mqtE/iHIP5hkzRVAtqDvKv7bWVZVOYdQq3ysoOrgNaInKSWvlhFrJxWnNAZHt8BAH3hcevcCZdUQ==
+tailwindcss@^1.4.2:
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-1.4.2.tgz#bfd94a4a571c2393d94c3819a6f798c2f3a37073"
+  integrity sha512-km9uPNjThE+3Jv26E9zqYe4F4Xl0mnAnyQO9hYWVIGo3JZE1pi4hsfroj5Bfr8X/khN8gZjVTMMY5r4sMVvhlg==
   dependencies:
     "@fullhuman/postcss-purgecss" "^2.1.2"
     autoprefixer "^9.4.5"

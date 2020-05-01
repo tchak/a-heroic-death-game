@@ -12,7 +12,7 @@ export default class extends Service {
     if (!this._api) {
       if (this.isPlayer) {
         this._api = swr(`${ENV.API_HOST}/characters/${this.playerKey}`, {
-          refreshInterval: interval('10 minutes'),
+          refreshInterval: interval('1 minute'),
         });
       } else {
         this._api = swr(`${ENV.API_HOST}/games/${this.hostKey}`, {
