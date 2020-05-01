@@ -1,28 +1,26 @@
 <ul class="mt-12 grid gap-5 max-w-lg mx-auto lg:grid-cols-2 lg:max-w-none">
-  {{#each @items as |item|}}
+  {{#each @abilities as |ability|}}
     <li class="flex flex-col rounded-lg shadow-lg overflow-hidden">
       <div class="flex-shrink-0">
         <img
           class="h-48 w-full object-fill"
-          alt={{item.name}}
-          src={{item.card}}
+          alt={{ability.name}}
+          src={{ability.card}}
         />
       </div>
       <div class="flex-1 bg-white p-6 flex flex-col justify-between font-bold">
-        {{#if (not-eq item.uses 99)}}
-          {{t "Uses" uses=item.uses}}
-          {{#if (and @useItem (not-eq item.uses 0))}}
+        {{#if (not-eq ability.uses 99)}}
+          {{t "Uses" uses=ability.uses}}
+          {{#if (and @useAbility (not-eq ability.uses 0))}}
             <div>
               <Button
                 @title={{t "use"}}
                 @color="blue"
-                {{on "click" (fn @useItem item)}}
+                {{on "click" (fn @useAbility ability)}}
               />
             </div>
           {{/if}}
         {{/if}}
-
-        <Host::GiveItem @item={{item}} />
       </div>
     </li>
   {{/each}}

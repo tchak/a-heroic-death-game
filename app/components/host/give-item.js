@@ -7,14 +7,21 @@ export default class extends Component {
   @service game;
 
   @tracked where = 'items';
-  @tracked what;
   @tracked whom;
+
+  get what() {
+    return this.args.item.key;
+  }
+
+  get hostOwned() {
+    return this.args.item.host_owned;
+  }
 
   get params() {
     return {
       item: this.what,
       from: {
-        where: this.what ? this.whereIs(this.what) : undefined,
+        where: this.whereIs(this.what),
         whom: this.character.key,
       },
       to: {
@@ -25,7 +32,9 @@ export default class extends Component {
   }
 
   whereIs(key) {
-    if (this.character.room.find((item) => item.key === key)) {
+    if (this.hostOwned) {
+      return 'items';
+    } else if (this.character.room.find((item) => item.key === key)) {
       return 'room';
     } else {
       return 'items';
@@ -37,34 +46,29 @@ export default class extends Component {
   }
 
   get character() {
-    return this.args.character;
+    if (this.hostOwned) {
+      return { key: 'host' };
+    }
+    return this.game.hero;
   }
 
   get characters() {
     return this.game.characters.filter(
-      (character) => character !== this.args.character
+      (character) => character !== this.character
     );
   }
 
   get places() {
     return [
       {
-        name: 'give',
+        name: 'Give to',
         key: 'items',
       },
       {
-        name: 'put in the room',
+        name: 'Put in the room of',
         key: 'room',
       },
     ];
-  }
-
-  get items() {
-    return this.character.items.concat(
-      this.character.room.map((item) =>
-        Object.assign({}, item, { inRoom: true })
-      )
-    );
   }
 
   @action selectWhere(evt) {

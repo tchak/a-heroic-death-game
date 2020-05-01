@@ -6,14 +6,12 @@
       <h2
         class="text-center text-4xl tracking-tight leading-10 font-extrabold text-gray-900 sm:text-5xl sm:leading-none md:text-6xl mb-4"
       >
-        {{this.name}}
+        {{#let (link "host" this.game.hostKey) as |l|}}
+          <a href={{l.url}} class="py-2" {{on "click" l.transitionTo}}>
+            {{this.name}}
+          </a>
+        {{/let}}
       </h2>
-
-      {{#let (link "host" this.game.hostKey) as |l|}}
-        <a href={{l.url}} {{on "click" l.transitionTo}}>
-          {{t "Back"}}
-        </a>
-      {{/let}}
 
       <Tabs @options={{this.tabs}} @onChange={{this.selectTab}} />
 
@@ -22,7 +20,10 @@
       {{else if (eq this.tab "Room")}}
         <Host::Items @items={{this.room}} />
       {{else if (eq this.tab "Abilities")}}
-        <Host::Items @items={{this.abilities}} @useItem={{this.useAbility}} />
+        <Host::Abilities
+          @abilities={{this.abilities}}
+          @useAbility={{this.useAbility}}
+        />
       {{else if (eq this.tab "Information")}}
         <Player::Text @text={{this.information}} />
       {{else if (eq this.tab "Secret")}}
