@@ -25,7 +25,7 @@ export default class extends Component {
         whom: this.character.key,
       },
       to: {
-        where: this.where,
+        where: this.where.replace(/^self-/, ''),
         whom: this.whom,
       },
     };
@@ -39,6 +39,10 @@ export default class extends Component {
     } else {
       return 'items';
     }
+  }
+
+  get giveToSelf() {
+    return this.whom === this.character.key;
   }
 
   get isStarted() {
@@ -59,7 +63,7 @@ export default class extends Component {
   }
 
   get places() {
-    return [
+    const places = [
       {
         name: 'Give to',
         key: 'items',
@@ -69,10 +73,32 @@ export default class extends Component {
         key: 'room',
       },
     ];
+
+    if (this.args.inRoom) {
+      places.push({
+        name: 'Take out of the room',
+        key: 'self-items',
+      });
+    } else {
+      places.push({
+        name: 'Put in own room',
+        key: 'self-room',
+      });
+    }
+
+    return places;
   }
 
   @action selectWhere(evt) {
     this.where = evt.target.selectedOptions[0].value;
+
+    if (this.where === 'self-items') {
+      this.whom = this.character.key;
+    } else if (this.where === 'self-room') {
+      this.whom = this.character.key;
+    } else {
+      this.whom = undefined;
+    }
   }
 
   @action selectWhat(evt) {

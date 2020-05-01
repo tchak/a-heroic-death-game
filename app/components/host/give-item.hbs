@@ -14,7 +14,7 @@
     </div>
   </div>
 
-  {{#if this.where}}
+  {{#if (and this.where (not this.giveToSelf))}}
     <div class="mt-3 sm:mt-2">
       <div class="rounded-md shadow-sm">
         <select

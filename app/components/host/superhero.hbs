@@ -18,7 +18,7 @@
       {{#if (eq this.tab "Items")}}
         <Host::Items @items={{this.items}} @useItem={{this.useItem}} />
       {{else if (eq this.tab "Room")}}
-        <Host::Items @items={{this.room}} />
+        <Host::Items @items={{this.room}} @inRoom={{true}} />
       {{else if (eq this.tab "Abilities")}}
         <Host::Abilities
           @abilities={{this.abilities}}
