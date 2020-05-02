@@ -6,10 +6,10 @@ Stop: Stop
 Refresh: Refresh
 Reset: Reset
 Items: Items
-Room: Room
+Room: Bedroom
 Abilities: Abilities
 Selected tab: Selected tab
-Uses: "{ uses, plural, =0 {can not be used anymore} one {1 use left} other {{uses} uses left}}"
+Uses: "{ uses, plural, =0 {cannot be used anymore} one {1 use left} other {{uses} uses left}}"
 Dead: Dead
 Kill: Kill
 Knock out: Knock out
@@ -17,14 +17,8 @@ Unconscious: Unconscious
 Bring back: Bring back
 You are dead!: You are dead!
 You are unconscious!: You are unconscious!
-Give item: Give item
-Put in the room: Put in the room
-Take: Take
-and: and
-to: to
-of: of
 OK: OK
-(in the room): (in the room)
+(in the room): (in the bedroom)
 You've been kocked out: You've been kocked out {duration}
 Sorry game over for you: Sorry, game over for you :(
 use: use

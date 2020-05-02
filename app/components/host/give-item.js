@@ -72,18 +72,18 @@ export default class extends Component {
 
     if (!this.hostOwned) {
       places.push({
-        name: 'Put in the room of',
+        name: 'Put in the bedroom of',
         key: 'room',
       });
 
       if (this.args.inRoom) {
         places.push({
-          name: 'Take out of the room',
+          name: 'Take out of the bedroom',
           key: 'self-items',
         });
       } else {
         places.push({
-          name: 'Put in own room',
+          name: 'Put in own bedroom',
           key: 'self-room',
         });
       }
