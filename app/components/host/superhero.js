@@ -55,4 +55,8 @@ export default class extends Component {
   @action useAbility(ability) {
     this.game.useAbility(ability.key);
   }
+
+  get publicURL() {
+    return `https://a-heroic-death-game.netlify.app/superhero/${this.hero.key}`;
+  }
 }

@@ -1,7 +1,7 @@
 import { modifier } from 'ember-modifier';
 import Clipboard from 'clipboard';
 
-function clipboard(element, _, { text, success, error }) {
+function clipboard(element, [text], { success, error }) {
   let textFn;
 
   if (typeof text === 'string') {
