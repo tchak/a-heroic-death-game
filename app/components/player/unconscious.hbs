@@ -19,7 +19,9 @@
       </h3>
       <div class="mt-2 text-sm leading-5 text-yellow-700">
         <p>
-          {{t "You will regane consiousnes in x minutes" minutes=3}}
+          {{#let (format-relative @disabledAt interval=5000) as |duration|}}
+            {{t "You've been kocked out" duration=duration}}
+          {{/let}}
         </p>
       </div>
     </div>

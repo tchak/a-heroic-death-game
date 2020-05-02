@@ -22,7 +22,7 @@
         {{else if character.disabled_at}}
           <span class="block">
             {{t "Unconscious"}}
-            ({{format-relative character.disabled_at}})
+            ({{format-relative character.disabled_at interval=5000}})
           </span>
 
           <Button

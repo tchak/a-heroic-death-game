@@ -25,7 +25,7 @@ to: to
 of: of
 OK: OK
 (in the room): (in the room)
-You will regane consiousnes in x minutes: You will regane consiousnes in {minutes} minutes
+You've been kocked out: You've been kocked out {duration}
 Sorry game over for you: Sorry, game over for you :(
 use: use
 Back: Back to secret base

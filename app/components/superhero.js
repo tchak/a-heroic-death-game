@@ -59,4 +59,8 @@ export default class extends Component {
   get profile() {
     return this.game.hero.profile;
   }
+
+  get disabledAt() {
+    return this.game.hero.disabled_at;
+  }
 }

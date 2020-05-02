@@ -13,7 +13,7 @@
         {{#if this.isDead}}
           <Player::Dead />
         {{else if this.isUnconscious}}
-          <Player::Unconscious />
+          <Player::Unconscious @disabledAt={{this.disabledAt}} />
         {{else}}
           <Tabs @options={{this.tabs}} @onChange={{this.selectTab}} />
 
