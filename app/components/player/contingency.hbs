@@ -1,0 +1,16 @@
+{{#if @contingency}}
+  <div
+    class="max-w-3xl mx-auto text-center text-2xl leading-9 font-medium text-gray-900"
+  >
+    {{#if this.contingencyEnvelopeOpen}}
+      <p class="p-6">
+        {{@contingency.contents}}
+      </p>
+    {{else}}
+      <Button
+        @title={{@contingency.instructions}}
+        {{on "click" this.openContingencyEnvelope}}
+      />
+    {{/if}}
+  </div>
+{{/if}}

@@ -17,17 +17,13 @@
 
       {{#if (eq this.tab "Items")}}
         <Host::Items @items={{this.items}} @useItem={{this.useItem}} />
-      {{else if (eq this.tab "Room")}}
+      {{else if (eq this.tab "Bedroom")}}
         <Host::Items @items={{this.room}} @inRoom={{true}} />
       {{else if (eq this.tab "Abilities")}}
         <Host::Abilities
           @abilities={{this.abilities}}
           @useAbility={{this.useAbility}}
         />
-      {{else if (eq this.tab "Information")}}
-        <Player::Text @text={{this.information}} />
-      {{else if (eq this.tab "Secret")}}
-        <Player::Text @text={{this.secret}} />
       {{/if}}
     </div>
   </div>

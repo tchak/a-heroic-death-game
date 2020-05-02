@@ -19,12 +19,13 @@
 
           {{#if (eq this.tab "Items")}}
             <Player::Items @items={{this.items}} />
-          {{else if (eq this.tab "Room")}}
+          {{else if (eq this.tab "Bedroom")}}
             <Player::Items @items={{this.room}} />
           {{else if (eq this.tab "Abilities")}}
             <Player::Items @items={{this.abilities}} />
           {{else if (eq this.tab "Information")}}
             <Player::Text @text={{this.information}} />
+            <Player::Contingency @contingency={{this.contingency}} />
           {{else if (eq this.tab "Secret")}}
             <Player::Text @text={{this.secret}} />
           {{/if}}

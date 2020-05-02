@@ -3,7 +3,7 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 
-const TABS = ['Items', 'Room', 'Abilities', 'Information', 'Secret'];
+const TABS = ['Items', 'Bedroom', 'Abilities', 'Information', 'Secret'];
 
 export default class extends Component {
   @service game;
@@ -62,5 +62,15 @@ export default class extends Component {
 
   get disabledAt() {
     return this.game.hero.disabled_at;
+  }
+
+  get contingency() {
+    if (this.game.hero.contingency_instructions) {
+      return {
+        instructions: this.game.hero.contingency_instructions,
+        contents: this.game.hero.contingency_contents,
+      };
+    }
+    return false;
   }
 }
